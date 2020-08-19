@@ -30,7 +30,6 @@ void CMainGame::Initialize()
 	{
 		m_listObj[OBJID::PLAYER].emplace_back(CAbstractFactory<CPlayer>::Create());
 		dynamic_cast<CPlayer*>(m_listObj[OBJID::PLAYER].front())->Set_Bullet(&m_listObj[OBJID::BULLET]);
-		dynamic_cast<CPlayer*>(m_listObj[OBJID::PLAYER].front())->SetShield(&m_listObj[OBJID::SHIELD]);
 	}
 
 	m_listObj[OBJID::MONSTER].emplace_back(CAbstractFactory<CMonster>::Create(400.f, 200.f));
@@ -76,7 +75,6 @@ void CMainGame::Late_Update()
 void CMainGame::Render()
 {
 	Rectangle(m_MemDC, 0, 0, WINCX, WINCY);
-	Rectangle(m_MemDC, 100, 100, WINCX - 100, WINCY - 100);
 
 	for (int i = 0; i < OBJID::END; ++i)
 	{
@@ -85,9 +83,9 @@ void CMainGame::Render()
 	}
 
 
-	TCHAR		szBuff[64] = L"";
-	swprintf_s(szBuff, L"Bullet: %d", m_listObj[OBJID::BULLET].size());
-	TextOut(m_MemDC, 50, 50, szBuff, lstrlen(szBuff));
+	//TCHAR		szBuff[64] = L"";
+	//swprintf_s(szBuff, L"Bullet: %d", m_listObj[OBJID::BULLET].size());
+	//TextOut(m_MemDC, 50, 50, szBuff, lstrlen(szBuff));
 
 	++m_iFPS;
 

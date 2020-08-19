@@ -19,18 +19,15 @@ public:
 
 public:
 	void Set_Bullet(list<CObj*>* _pBullet) { m_pBullet = _pBullet; }
-	void SetShield(list<CObj*>* _pShield) { m_pShield = _pShield; }
 
 private:
-	CObj* Create_Bullet();
-	CObj* Create_Bullet(BULLET::DIR _eDir);
-	CObj* Create_Bullet(VECTOR _tDirection,BOOL _bIsScrewed = FALSE);
-
-	CObj* CreateShield();
+	CObj* Create_Bullet(VECTOR _tDirection);
 
 private:
 	list<CObj*>*	m_pBullet;
-	list<CObj*>*	m_pShield;
+
+	DWORD			m_dwTime;
+	bool			m_bFire;
 
 };
 

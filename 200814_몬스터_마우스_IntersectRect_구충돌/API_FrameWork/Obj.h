@@ -26,7 +26,6 @@ public:
 
 protected:
 	void Update_Rect();
-	void Update_Direction();
 
 protected:
 	INFO		m_tInfo;
@@ -34,7 +33,6 @@ protected:
 	float		m_fSpeed;
 	bool		m_bDead;
 
-	int				m_iDegree;
 	VECTOR			m_tDirection;
 };
 

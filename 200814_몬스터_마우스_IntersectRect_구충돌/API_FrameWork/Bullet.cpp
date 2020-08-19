@@ -3,7 +3,6 @@
 
 
 CBullet::CBullet()
-	: m_eDir(BULLET::END)
 {
 }
 
@@ -15,14 +14,10 @@ CBullet::~CBullet()
 
 void CBullet::Initialize()
 {
-	m_fPivotX = NAN;
-	m_fPivotY = NAN;
-	m_fRadian = 0.f;
-
 	m_tInfo.iCX = 10;
 	m_tInfo.iCY = 10;
 
-	m_fSpeed = 5.f;
+	m_fSpeed = 10.f;
 }
 
 int CBullet::Update()
@@ -30,20 +25,8 @@ int CBullet::Update()
 	if (m_bDead)
 		return OBJ_DEAD;
 	
-	if (isnan(m_fPivotX))
-	{
-		m_tInfo.fX += m_tDirection.x* m_fSpeed;
-		m_tInfo.fY -= m_tDirection.y* m_fSpeed;
-	}
-	else
-	{
-		m_fPivotX += m_tDirection.x* m_fSpeed;
-		m_fPivotY -= m_tDirection.y* m_fSpeed;
-
-		m_fRadian += DegreeToRadian(90*m_fSpeed/15);
-		m_tInfo.fX = m_fPivotX + cosf(m_fRadian) * 15;
-		m_tInfo.fY = m_fPivotY + sinf(m_fRadian) * 15;
-	}
+	m_tInfo.fX += m_tDirection.x * m_fSpeed;
+	m_tInfo.fY += m_tDirection.y * m_fSpeed;
 
 	Update_Rect();
 
@@ -52,8 +35,8 @@ int CBullet::Update()
 
 void CBullet::Late_Update()
 {
-	if(100 >= m_tRect.left || 100 >= m_tRect.top
-		|| WINCX - 100 <= m_tRect.right || WINCY - 100 <= m_tRect.bottom)
+	if(0>= m_tRect.left || 0 >= m_tRect.top
+		|| WINCX<= m_tRect.right || WINCY<= m_tRect.bottom)
 		m_bDead = true;
 }
 

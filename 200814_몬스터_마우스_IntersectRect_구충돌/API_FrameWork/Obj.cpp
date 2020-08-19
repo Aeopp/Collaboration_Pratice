@@ -22,8 +22,3 @@ void CObj::Update_Rect()
 	m_tRect.bottom = (LONG)(m_tInfo.fY + (m_tInfo.iCY >> 1));
 }
 
-void CObj::Update_Direction()
-{
-	m_tDirection.x = cos(DegreeToRadian(m_iDegree));
-	m_tDirection.y = sin(DegreeToRadian(m_iDegree));
-}
